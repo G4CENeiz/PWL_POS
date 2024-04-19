@@ -11,6 +11,9 @@
         <div class="card">
             <div class="card-header">Manage Kategori</div>
             <div class="card-body">
+                <span class="container d-flex flex-row-reverse">
+                    <a href="{{ route('/kategori/create') }}" class="btn btn-primary">Add</a>
+                </span>
                 {{ $dataTable->table() }}
             </div>
         </div>
