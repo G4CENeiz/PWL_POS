@@ -20,7 +20,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/level', [LevelController::class, 'index']);
+Route::get('/level', [LevelController::class, 'index'])->name('level.index');
+Route::get('/level/create', [LevelController::class, 'create'])->name('level.create');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('/kategori');
 Route::get('/kategori/create', [KategoriController::class, 'create'])->name('/kategori/create');
