@@ -20,6 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WelcomeController::class, 'index']);
 
+Route::group(['prefix' => 'user'], function () {
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/list', [UserController::class, 'list']);
+    Route::get('/create', [UserController::class, 'create']);
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/{id}', [UserController::class, 'show']);
+    Route::get('/{id}/edit', [UserController::class, 'edit']);
+    Route::put('/{id}', [UserController::class, 'update']);
+    Route::delete('/{id}', [UserController::class, 'destroy']);
+});
+
 Route::get('/level', [LevelController::class, 'index'])->name('level.index');
 Route::get('/level/create', [LevelController::class, 'create'])->name('level.create');
 Route::post('/level', [LevelController::class, 'store'])->name('level.store');
@@ -34,11 +45,11 @@ Route::get('/kategori/update/{id}', [KategoriController::class, 'update'])->name
 Route::put('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('/kategori/edit');
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete'])->name('/kategori/delete');
 
-Route::get('/user', [UserController::class, 'index'])->name('user.index');
-Route::get('/user/create', [UserController::class, 'tambah'])->name('user.create');
-Route::post('/user', [UserController::class, 'tambah_simpan'])->name('user.store');
-Route::get('/user/update/{id}', [UserController::class, 'ubah'])->name('user.update');
-Route::put('/user/edit/{id}', [UserController::class, 'ubah_simpan'])->name('user.edit');
-Route::get('/user/delete/{id}', [UserController::class, 'hapus'])->name('user.delete');
+// Route::get('/user', [UserController::class, 'index'])->name('user.index');
+// Route::get('/user/create', [UserController::class, 'tambah'])->name('user.create');
+// Route::post('/user', [UserController::class, 'tambah_simpan'])->name('user.store');
+// Route::get('/user/update/{id}', [UserController::class, 'ubah'])->name('user.update');
+// Route::put('/user/edit/{id}', [UserController::class, 'ubah_simpan'])->name('user.edit');
+// Route::get('/user/delete/{id}', [UserController::class, 'hapus'])->name('user.delete');
 
 Route::resource('m_user', POSController::class);
