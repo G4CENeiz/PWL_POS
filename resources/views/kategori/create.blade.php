@@ -10,7 +10,6 @@
             <div class="card-header">
                 <h3 class="card-title">Buat kategori baru</h3>
             </div>
-
             
             <form action="../kategori" method="post">
                 <div class="card-body">

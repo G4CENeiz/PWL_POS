@@ -13,21 +13,42 @@
 
             <form action="../user" method="post">
                 <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <label for="username">Username</label>
-                        <input type="text" name="username" id="username" class="form-control" placeholder="Masukkan Username">
+                        <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" placeholder="Masukkan Username">
+                        @error('username', 'user')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
-                        <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama">
+                        <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" placeholder="Masukkan Nama">
+                        @error('nama', 'user')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan Password">
+                        <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Masukkan Password">
+                        @error('password', 'user')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group">
                         <label for="level_id">Level ID</label>
-                        <input type="number" name="level_id" id="level_id" class="form-control" placeholder="Masukkan Level ID">
+                        <input type="number" name="level_id" id="level_id" class="form-control @error('level_id') is-invalid @enderror" placeholder="Masukkan Level ID">
+                        @error('level_id', 'user')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 

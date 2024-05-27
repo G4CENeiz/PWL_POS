@@ -325,12 +325,17 @@ return [
         [
             'text' => 'Kategori',
             'url' => 'kategori',
-            'icon' => 'far fa-fw fa-file',
+            'icon' => 'fas fa-fw fa-list',
         ],
         [
             'text' => 'User',
             'url' => 'user',
             'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'Level',
+            'url' => 'level',
+            'icon' => 'fas fa-fw fa-layer-group',
         ],
         ['header' => 'account_settings'],
         [

@@ -22,6 +22,10 @@ Route::get('/', function () {
 
 Route::get('/level', [LevelController::class, 'index'])->name('level.index');
 Route::get('/level/create', [LevelController::class, 'create'])->name('level.create');
+Route::post('/level', [LevelController::class, 'store'])->name('level.store');
+Route::get('/level/update/{id}', [LevelController::class, 'update'])->name('level.update');
+Route::get('/level/edit/{id}', [LevelController::class, 'edit'])->name('level.edit');
+Route::get('/level/delete/{id}', [LevelController::class, 'delete'])->name('level.delete');
 
 Route::get('/kategori', [KategoriController::class, 'index'])->name('/kategori');
 Route::get('/kategori/create', [KategoriController::class, 'create'])->name('/kategori/create');
@@ -30,14 +34,6 @@ Route::get('/kategori/update/{id}', [KategoriController::class, 'update'])->name
 Route::put('/kategori/edit/{id}', [KategoriController::class, 'edit'])->name('/kategori/edit');
 Route::get('/kategori/delete/{id}', [KategoriController::class, 'delete'])->name('/kategori/delete');
 
-// Route::get('/user', [UserController::class, 'index'])->name('/user');
-// Route::get('/user/tambah', [UserController::class, 'tambah'])->name('/user/tambah');
-// Route::get('/user/ubah/{id}', [UserController::class, 'ubah'])->name('/user/ubah');
-// Route::get('/user/hapus/{id}', [UserController::class, 'hapus'])->name('/user/hapus');
-// Route::post('/user/tambah_simpan', [UserController::class, 'tambah_simpan'])->name('/user/tambah_simpan');
-// Route::put('/user/ubah_simpan/{id}', [UserController::class, 'ubah_simpan'])->name('/user/ubah_simpan');
-
-// UTS
 Route::get('/user', [UserController::class, 'index'])->name('user.index');
 Route::get('/user/create', [UserController::class, 'tambah'])->name('user.create');
 Route::post('/user', [UserController::class, 'tambah_simpan'])->name('user.store');
