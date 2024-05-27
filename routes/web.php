@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LevelController;
+use App\Http\Controllers\POSController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,3 +41,5 @@ Route::post('/user', [UserController::class, 'tambah_simpan'])->name('user.store
 Route::get('/user/update/{id}', [UserController::class, 'ubah'])->name('user.update');
 Route::put('/user/edit/{id}', [UserController::class, 'ubah_simpan'])->name('user.edit');
 Route::get('/user/delete/{id}', [UserController::class, 'hapus'])->name('user.delete');
+
+Route::resource('m_user', POSController::class);
