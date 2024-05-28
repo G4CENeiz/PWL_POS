@@ -14,25 +14,27 @@ class UserController extends Controller
             'title' => 'Daftar User ',
             'list' => ['Home', 'User']
         ];
-
         $activeMenu = 'user';
-
         $page = (object) [
             'title' => 'Daftar user yang terdaftar dalam sistem'
         ];
-
+        $level = LevelModel::all();
         return view(
             'user.index', 
             [
                 'breadcrumb' => $breadcrumb, 
                 'activeMenu' => $activeMenu,
-                'page' => $page
+                'page' => $page,
+                'level' => $level,
             ]
         );
     }
 
-    public function list() {
+    public function list(Request $request) {
         $users = UserModel::select('user_id', 'username', 'nama', 'level_id')->with('level')->get();
+        if ($request->level_id) {
+            $users = $users->where('level_id', $request->level_id);
+        }
         return DataTables::of($users)->addIndexColumn()->addColumn('action', function ($user) {
                 $btn = '<a href="'.url('/user/' . $user->user_id).'" class="btn btn-info btn-sm">Detail</a> ';
                 $btn .= '<a href="'.url('/user/' . $user->user_id . '/edit').'" class="btn btn-warning btn-sm">Edit</a> ';
