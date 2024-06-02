@@ -18,7 +18,10 @@ class FileUploadController extends Controller
         ]);
         $fileExt = $request->document->getClientOriginalName();
         $fileName = 'web-' . time() . '.' . $fileExt;
-        $path = $request->document->storeAs('uploads', $fileName);
+        $path = $request->document->storeAs('public', $fileName);
+        $newPath = asset('storage/' . $fileName);
         echo 'upload process successful, file is located at: ' . $path;
+        echo '<br>';
+        echo 'Tampilkan link:<a href="' . $newPath . '">' . $newPath . '</a>';
     }
 }
