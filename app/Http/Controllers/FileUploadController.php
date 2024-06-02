@@ -16,16 +16,14 @@ class FileUploadController extends Controller
         $request->validate([
             'document' => 'required|file|image|max:5000',
         ]);
-        $fileExt = $request->document->getClientOriginalName();
-        $fileName = 'web-' . time() . '.' . $fileExt;
+        $fileExt = $request->document->getClientOriginalExtension();
+        $fileName = $request->documentName . '.' . $fileExt;
 
         $path = $request->document->move('image', $fileName);
         $path = str_replace("\\", "//", $path);
-        echo 'Path variable content: ' . $path . '<br>';
 
         $newPath = asset('image/' . $fileName);
-        echo 'upload process successful, file is located at: ' . $path;
-        echo '<br>';
-        echo 'Tampilkan link:<a href="' . $newPath . '">' . $newPath . '</a>';
+        echo 'Tampilkan link:<a href="' . $newPath . '">' . $fileName . '</a><br>';
+        echo '<img style="width: 100%" src="' . $newPath . '" alt="' . $fileName .'">';
     }
 }

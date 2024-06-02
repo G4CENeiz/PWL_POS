@@ -14,11 +14,20 @@
             @csrf
 
             <div class="mb-3">
-                <label for="document" class="form-label">Gambar Profile</label>
-                <input type="file" name="document" id="document" class="form-control">
-                @error('document')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
+                <div class="form-group">
+                    <label for="documentName" class="form-label">Nama File</label>
+                    <input type="text" name="documentName" id="documentName" class="form-control">
+                    @error('documentName')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="document" class="form-label">Gambar Profile</label>
+                    <input type="file" name="document" id="document" class="form-control">
+                    @error('document')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                </div>
             </div>
 
             <button type="submit" class="btn btn-primary my-2">Upload</button>
