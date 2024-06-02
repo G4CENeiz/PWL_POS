@@ -13,6 +13,9 @@ class FileUploadController extends Controller
     public function doFileUpload(Request $request) {
         // return 'Hello World';
         // dump($request->document);
+        $request->validate([
+            'document' => 'required|file|image|max:500',
+        ]);
         if ($request->hasFile('document')) {
             echo 'path(): ' . $request->document->path();
             echo '<br>';
